@@ -26,8 +26,7 @@ if PASS == 'None':
 drag_and_dropped_files = None
 if len(sys.argv) > 1:
     drag_and_dropped_files = sys.argv[1:]
-else:
-    drag_and_dropped_files = [r'E:\Movies & TV\from qbittorrent this time\SUTest.mkv']
+
 
 # Instructions printed
 if not drag_and_dropped_files:
@@ -42,13 +41,17 @@ ip_suffix = input('Enter IP suffix: ')
 print('Establishing connection...')
 ftp_instance = FTP(user=USER, passwd=PASS)
 
-ftp_instance.connect(host=IP_PREFIX+ip_suffix, port=PORT)
-print('Connection: Success')
+try:
+    ftp_instance.connect(host=IP_PREFIX+ip_suffix, port=PORT)
+    print('Connection: Success')
 
-# except:
-#     print('fuct up somehow')
-#     input()
-#     exit()
+except:
+    print('Connection Failed')
+    errors = sys.exc_info()
+    for e in errors:
+        print(str(e))
+    input('\nPress key to exit.')
+    exit()
 
 ftp_instance.cwd(FOLDER_NAME)
 for F in drag_and_dropped_files:

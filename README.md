@@ -1,6 +1,6 @@
  # FTP-Transfer
 
-FTP-TRansfer is a small Python script for sending files via FTP.
+FTP-Transfer is a small Python script for sending files via FTP.
 
 For iOS, consider using the app FTPManager.
 
