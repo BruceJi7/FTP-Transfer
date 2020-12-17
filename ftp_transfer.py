@@ -8,6 +8,9 @@ with open(os.path.join(THIS_FILE_LOC, 'CONFIG.txt'), 'r') as conf:
     cfg = conf.readlines()
 
 IP_PREFIX = cfg[0].split(":")[1].strip()
+if not IP_PREFIX.endswith('.'):
+    IP_PREFIX = IP_PREFIX + '.'
+    
 PORT = int(cfg[1].split(":")[1].strip())
 FOLDER_NAME = cfg[4].split(":")[1].strip()
 BLOCKSIZE = int(cfg[5].split(":")[1].strip())
